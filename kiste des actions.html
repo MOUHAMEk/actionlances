@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Actions Signalées</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<style>
+    /* styles.css */
+header {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-list {
+    display: flex;
+    justify-content: space-around; /* Espacement entre les actions */
+    flex-wrap: wrap; /* Pour que les actions se replient si besoin */
+}
+
+.action-item {
+    text-align: center;
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    width: 200px; /* Taille des cases d'action */
+}
+
+.action-photo {
+    width: 100%; /* Photo prend la largeur de la case */
+    border-radius: 10px;
+}
+
+.accept-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
+.accept-button:hover {
+    background-color: #2980b9;
+}
+
+/* Styles pour la boîte modale */
+.modal {
+    position: fixed; /* Fixé à l'écran */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fond transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrer le contenu */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.complete-action {
+    background-color: #2ecc71; /* Vert pour le bouton "achevé" */
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.complete-action:hover {
+    background-color: #27ae60;
+}
+
+.close-modal {
+    background-color: #e74c3c; /* Rouge pour le bouton "annuler" */
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.close-modal:hover {
+    background-color: #c0392b;
+}
+
+footer {
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-transform: uppercase;
+    margin-top: 40px;
+}
+
+</style>
+<body>
+    <header>
+        <h1>Bienvenue</h1>
+    </header>
+    <div class="container">
+        <!-- Liste des actions signalées -->
+        <div class="action-list">
+            <div class="action-item">
+                <h2>Action 1</h2>
+                <img src="photo1.jpg" alt="Photo de l'action 1" class="action-photo">
+                <p>Lancé par: Jean Dupont (Chef de projet)</p>
+                <p>Date de lancement: 01/04/2023</p>
+                <button class="accept-button" onclick="openModal(1)">Accepter</button>
+            </div>
+
+            <div class="action-item">
+                <h2>Action 2</h2>
+                <img src="photo2.jpg" alt="Photo de l'action 2" class="action-photo">
+                <p>Lancé par: Marie Dupont (Responsable RH)</p>
+                <p>Date de lancement: 05/04/2023</p>
+                <button class="accept-button" onclick="openModal(2)">Accepter</button>
+            </div>
+
+            <div class="action-item">
+                <h2>Action 3</h2>
+                <img src="photo3.jpg" alt="Photo de l'action 3" class="action-photo">
+                <p>Lancé par: Paul Martin (Responsable IT)</p>
+                <p>Date de lancement: 10/04/2023</p>
+                <button class="accept-button" onclick="openModal(3)">Accepter</button>
+            </div>
+
+            <div class="action-item">
+                <h2>Action 4</h2>
+                <img src="photo4.jpg" alt="Photo de l'action 4" class="action-photo">
+                <p>Lancé par: Sophie Lambert (Responsable Marketing)</p>
+                <p>Date de lancement: 15/04/2023</p>
+                <button class="accept-button" onclick="openModal(4)">Accepter</button>
+            </div>
+        </div>
+
+        <!-- Boîte modale pour accepter l'action -->
+        <div id="modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>Accepter l'action</h3>
+                <p>Voulez-vous marquer cette action comme achevée?</p>
+                <p>Date de fin: 30/04/2023</p>
+                <p>Temps écoulé depuis le lancement: 15 jours</p>
+                <button class="close-modal" onclick="closeModal()">Annuler</button>
+                <button class="complete-action" onclick="completeAction()">Marquer comme achevé</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        MArisk
+    </footer>
+    <script>
+        // script.js
+function openModal(actionId) {
+    const modal = document.getElementById("modal");
+    modal.style.display = "flex"; // Afficher la boîte modale
+}
+
+function closeModal() {
+    const modal = document.getElementById("modal");
+    modal.style.display = "none"; // Fermer la boîte modale
+}
+
+function completeAction() {
+    alert("L'action a été marquée comme achevée!"); // Notification
+    closeModal(); // Fermer la boîte modale
+}
+
+    </script>
+</body>
